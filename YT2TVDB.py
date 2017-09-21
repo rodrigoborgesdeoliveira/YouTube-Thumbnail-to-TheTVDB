@@ -1,4 +1,5 @@
 import re
+import cloudconvert
 
 youtube_url = input("Type or paste the YouTube link: ") + " "
 
@@ -29,5 +30,10 @@ elif "youtu.be" in youtube_url:
 
 youtube_thumbnail_url = f"https://i.ytimg.com/vi/{youtube_code}/maxresdefault.jpg"
 print(f"\nVideo's max resolution thumbnail: {youtube_thumbnail_url}")
+
+with open("API_KEY", "r") as file:
+    api = file.read()
+
+
 
 input("\nPress any key to exit") # Prevents CMD from auto-exiting

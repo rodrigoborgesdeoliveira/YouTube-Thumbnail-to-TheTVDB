@@ -1,2 +1,5 @@
 # PyCharm directory
 .idea
+
+# Do not share the API_KEY
+API_KEY
