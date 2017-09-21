@@ -32,8 +32,42 @@ youtube_thumbnail_url = f"https://i.ytimg.com/vi/{youtube_code}/maxresdefault.jp
 print(f"\nVideo's max resolution thumbnail: {youtube_thumbnail_url}")
 
 with open("API_KEY", "r") as file:
-    api = file.read()
+    API_KEY = file.read()
 
+print("Creating process...")
+api = cloudconvert.Api(API_KEY)
+process = api.createProcess({
+    "inputformat": "jpg",
+    "outputformat": "jpg"
+})
 
+print("Converting image...")
+process.start({
+    "input": "download",
+    "file": youtube_thumbnail_url,
+    "outputformat": "jpg",
+    # "converoptions": {
+    #     "resize": "400x225",
+    #     "resizemode": "scale",
+    #     "resizeenlarge": True,
+    #     "rotate": None,
+    #     "grayscale": None,
+    #     "strip_metatags": None,
+    #     "density": None,
+    #     "auto_orient": None,
+    #     "command": None
+    # }
+    "preset": "AduhH6JcFl",
+    "wait": True
+})
 
-input("\nPress any key to exit") # Prevents CMD from auto-exiting
+process.refresh()
+
+process.wait()
+print(process["message"])
+
+print("Downloading image to the same directoty as the YT2TVDB.py file...")
+process.download()
+print("Download finished!")
+
+exit = input("\nPress return key to exit") # Prevents CMD from auto-exiting
