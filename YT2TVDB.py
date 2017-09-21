@@ -10,6 +10,11 @@ if "watch?v=" in youtube_url:
         search_pattern = re.search("watch\?v=(.*?)&feature", youtube_url)
         if search_pattern:
             youtube_id = search_pattern.group(1)
+    elif "&index" in youtube_url:
+        # e.g.: https://www.youtube.com/watch?v=tlTKTTt47WE&index=2&list=WL
+        search_pattern = re.search("watch\?v=(.*?)&index", youtube_url)
+        if search_pattern:
+            youtube_id = search_pattern.group(1)
     else:
         # e.g.: https://www.youtube.com/watch?v=yZv2daTWRZU
         search_pattern = re.search("watch\?v=(.*?) ", youtube_url)
