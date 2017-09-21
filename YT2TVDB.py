@@ -27,4 +27,7 @@ elif "youtu.be" in youtube_url:
 
 # print(f"YouTube video unique code: {youtube_code}")
 
+youtube_thumbnail_url = f"https://i.ytimg.com/vi/{youtube_code}/maxresdefault.jpg"
+print(f"\nVideo's max resolution thumbnail: {youtube_thumbnail_url}")
+
 input("\nPress any key to exit") # Prevents CMD from auto-exiting
