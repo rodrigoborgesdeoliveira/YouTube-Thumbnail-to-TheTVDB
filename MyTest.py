@@ -3,7 +3,7 @@ import YT2TVDB
 
 
 class MyTestCase(unittest.TestCase):
-    def test_something(self):
+    def test_different_youtube_url_formats(self):
         self.assertEqual(
             YT2TVDB.get_thumbnail_url("https://www.youtube.com/attribution_link?a=8g8kPrPIi-ecwIsS&u=/"
                                       "watch%3Fv%3DyZv2daTWRZU%26feature%3Dem-uploademail"),
