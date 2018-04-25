@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/rodrigoborgesdeoliveira/YouTube-Thumbnail-to-TheTVDB.svg?style=svg)](https://circleci.com/gh/rodrigoborgesdeoliveira/YouTube-Thumbnail-to-TheTVDB)
+
 # YouTube-Thumbnail-to-TheTVDB
 Provided a YouTube video link, get an image of the video's thumbnail ready to be uploaded to the desired TV Show episode on TheTVDB.
 
