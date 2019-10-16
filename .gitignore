@@ -1,5 +1,9 @@
 # PyCharm directory
 .idea
+
 htmlcov
 *default.1.jpg
 Thumbs.db
+Lib
+Scripts
+pyvenv.cfg

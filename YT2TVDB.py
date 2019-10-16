@@ -1,8 +1,8 @@
+#! python3
 import re
 import cloudconvert
 
-
-def get_thumbnail_url(youtube_url):
+def get_thumbnail_url(youtube_url, thumbnail_res):
     youtube_url = youtube_url.rstrip()
     # Get YouTube video ID
     if "watch%3Fv%3D" in youtube_url:
@@ -28,7 +28,7 @@ def get_thumbnail_url(youtube_url):
         if search_pattern:
             youtube_id = search_pattern.group(1)
 
-    youtube_thumbnail_url = f"https://i.ytimg.com/vi/{youtube_id}/maxresdefault.jpg"
+    youtube_thumbnail_url = f"https://i.ytimg.com/vi/{youtube_id}/{thumbnail_res}default.jpg"
     print(f"\nVideo's max resolution thumbnail: {youtube_thumbnail_url}")
 
     return youtube_thumbnail_url
@@ -48,6 +48,7 @@ def download_thumbnail(youtube_thumbnail_url):
     })
 
     print("Converting image...")
+
     process.start({
         "input": "download",
         "file": youtube_thumbnail_url,
@@ -68,8 +69,13 @@ def download_thumbnail(youtube_thumbnail_url):
 
 def main():
     youtube_url = input("Type or paste the YouTube link: ")
-    thumbnail_url = get_thumbnail_url(youtube_url)
-    download_thumbnail(thumbnail_url)
+    try:
+        thumbnail_url = get_thumbnail_url(youtube_url, "maxres")
+        download_thumbnail(thumbnail_url)
+    except:
+        print("Max resolution failed, retrying with a lower resolution")
+        thumbnail_url = get_thumbnail_url(youtube_url, "mq")
+        download_thumbnail(thumbnail_url)
 
     input("\nPress the return key to exit")  # Prevents CMD from auto-exiting
 
