@@ -8,3 +8,6 @@ Lib
 Scripts
 pyvenv.cfg
 pip-selfcheck.json
+
+# File where the cloudconvert's personal API key is stored.
+API_KEY
