@@ -273,6 +273,10 @@ class MyTestCase(unittest.TestCase):
             YT2TVDB.get_thumbnail_url("http://youtube.com/watch?vi=oTJRivZTMLs&feature=channel", "maxres"),
             "https://i.ytimg.com/vi/oTJRivZTMLs/maxresdefault.jpg"
         )
+        self.assertEqual(
+            YT2TVDB.get_thumbnail_url("https://m.youtube.com/watch?v=oTJRivZTMLs", "maxres"),
+            "https://i.ytimg.com/vi/oTJRivZTMLs/maxresdefault.jpg"
+        )
 
 
 if __name__ == '__main__':

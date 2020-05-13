@@ -4,6 +4,7 @@ import cloudconvert
 
 def get_thumbnail_url(youtube_url, thumbnail_res):
     youtube_url = youtube_url.rstrip()
+    youtube_id = ""
 
     # Get YouTube video ID
     search_pattern = re.search("(?:\/|%3D|v=|vi=)([0-9A-z-_]{11})(?:[%#?&]|$)", youtube_url)
