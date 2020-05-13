@@ -4,29 +4,11 @@ import cloudconvert
 
 def get_thumbnail_url(youtube_url, thumbnail_res):
     youtube_url = youtube_url.rstrip()
+
     # Get YouTube video ID
-    if "watch%3Fv%3D" in youtube_url:
-        # e.g.: https://www.youtube.com/attribution_link?a=8g8kPrPIi-ecwIsS&u=/watch%3Fv%3DyZv2daTWRZU%26feature%3Dem-uploademail
-        search_pattern = re.search("watch%3Fv%3D(.*?)%", youtube_url)
-        if search_pattern:
-            youtube_id = search_pattern.group(1)
-    elif "watch?v%3D" in youtube_url:
-        # e.g.: http://www.youtube.com/attribution_link?a=JdfC0C9V6ZI&u=%2Fwatch%3Fv%3DEhxJLojIE_o%26feature%3Dshare
-        search_pattern = re.search("v%3D(.*?)&format", youtube_url)
-        if search_pattern:
-            youtube_id = search_pattern.group(1)
-    elif "/e/" in youtube_url:
-        # e.g.: http://www.youtube.com/e/dQw4w9WgXcQ
-        youtube_url += " "
-        search_pattern = re.search("/e/(.*?) ", youtube_url)
-        if search_pattern:
-            youtube_id = search_pattern.group(1)
-    else:
-        # All else.
-        search_pattern = re.search("(?:[?&]vi?=|\/embed\/|\/\d\d?\/|\/vi?\/|https?:\/\/(?:www\.)?youtu\.be\/)([^&\n?#]+)",
-                                   youtube_url)
-        if search_pattern:
-            youtube_id = search_pattern.group(1)
+    search_pattern = re.search("(?:\/|%3D|v=|vi=)([0-9A-z-_]{11})(?:[%#?&]|$)", youtube_url)
+    if search_pattern:
+        youtube_id = search_pattern.group(1)
 
     youtube_thumbnail_url = f"https://i.ytimg.com/vi/{youtube_id}/{thumbnail_res}default.jpg"
     print(f"\nVideo's max resolution thumbnail: {youtube_thumbnail_url}")
